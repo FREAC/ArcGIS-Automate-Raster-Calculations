@@ -28,13 +28,15 @@ def time_format(t): #only to tell time elapsed
 change project_space to the copied project folder path
 '''
 project_space = r"C:\Project"
-
+in_raster_type = ".bag"
+out_raster_type = '.tif'
 bag_dir_path = os.path.join(project_space,"SRC_BAG")
+
 folder_names = [name for name in os.listdir(bag_dir_path) if os.path.isdir(os.path.join(bag_dir_path, name))]
 bag_list = []
 for folder in folder_names:
     folder_dir = os.path.join(bag_dir_path, folder)
-    bag_files = [file for file in os.listdir(folder_dir) if file.endswith('.bag')]
+    bag_files = [file for file in os.listdir(folder_dir) if file.endswith(in_raster_type)]
     for bag_file in bag_files:
         bag_list.append(os.path.join(folder_dir, bag_file))
         print(os.path.join(folder_dir, bag_file))
@@ -58,7 +60,7 @@ start_time = time.time()
 for bag in bag_list:
     bag_layer = arcgis.raster.Raster(bag)
     result = arcgis.raster.functions.slope(bag_layer)
-    out_path = os.path.join(slope_folder,(os.path.basename(bag)[:-4]+'_Slope.tif'))
+    out_path = os.path.join(slope_folder,(os.path.basename(bag)[:-4]+('_Slope'+out_raster_type)))
     result.save(out_path)
     print(f"Saved to: {os.path.basename(os.path.dirname(bag))}")
 end_time = time.time()
@@ -75,7 +77,7 @@ start_time = time.time()
 for bag in bag_list:    
     bag_layer = arcgis.raster.Raster(bag)
     result = arcgis.raster.functions.convolution(raster=bag_layer, kernel=sobel_vertical)
-    out_path = os.path.join(sobel_folder,(os.path.basename(bag)[:-4]+'_SobVert.tif'))
+    out_path = os.path.join(sobel_folder,(os.path.basename(bag)[:-4]+('_SobVert'+out_raster_type)))
     result.save(out_path)
     print(f"Saved to: {os.path.basename(os.path.dirname(bag))}")
 end_time = time.time()
