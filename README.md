@@ -1,7 +1,7 @@
 # ArcGIS-Automate-Raster-Calculations
 Automated raster calculations on .bag files using arcpy functions 
 
-## Scipt features:
+## Script features:
 
 - Automates esri-based raster calculations on .bag files, but can be altered to include any raster format. 
 
