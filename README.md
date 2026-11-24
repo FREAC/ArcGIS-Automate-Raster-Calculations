@@ -1,13 +1,15 @@
-## ArcGIS-Automate-Raster-Calculations
+# ArcGIS-Automate-Raster-Calculations
 Automated raster calculations on .bag files using arcpy functions 
 
-# Scipt features:
+## Scipt features:
 
--Automates esri-based raster calculations on .bag files, but can be altered to include any raster format. 
+- Automates esri-based raster calculations on .bag files, but can be altered to include any raster format. 
 
--Stores Slope and Sobel Vertical convolutions of all rasters in their own folders
+- Stores Sobel Vertical convolutions of all rasters in their own folders
+
+- For more information on different raster calculations, view the documentation from ESRI: https://developers.arcgis.com/python/latest/api-reference/arcgis.raster.functions.html
  
-# How to use this script:
+## How to use this script:
 
 1. Save or copy this code to a python IDE (jupyter notebook, ArcGIS Python window)
 
